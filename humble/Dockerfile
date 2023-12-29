@@ -117,7 +117,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
     rm -rf /var/lib/apt/lists/*; \
     fi
 
-COPY ./entrypoint.sh /
+COPY ./humble/entrypoint.sh /
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
 
 ENV USER ubuntu
