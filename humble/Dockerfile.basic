@@ -20,6 +20,8 @@ FROM ubuntu:jammy-20230816
 ARG TARGETPLATFORM
 LABEL maintainer="Tiryoh<tiryoh@gmail.com>"
 
+LABEL org.opencontainers.image.description "docker image description"
+
 SHELL ["/bin/bash", "-c"]
 
 # Upgrade OS
