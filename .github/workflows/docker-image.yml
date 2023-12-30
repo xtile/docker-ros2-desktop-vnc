@@ -1,4 +1,4 @@
-name: humble-test
+name: humble-full
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -6,8 +6,8 @@ name: humble-test
 # documentation.
 
 on:
-#  push:
-#    branches: [ "master" ]
+  push:
+    branches: [ "master" ]
   schedule:
     - cron: '31 13 * * 0'    
 
