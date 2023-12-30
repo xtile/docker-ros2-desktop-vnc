@@ -26,10 +26,9 @@ https://memoteki.net/archives/2955
 Run the docker container and access with port `6080`.  
 Change the `shm-size` value depending on the situation.
 
-__NOTE__: `--security-opt seccomp=unconfined` flag is required to launch humble image. See https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56.
 
 ```
-docker run -p 6080:80 --security-opt seccomp=unconfined --shm-size=512m tiryoh/ros2-desktop-vnc:humble
+docker run -p 6080:80  --shm-size=512m tiryoh/ros2-desktop-vnc:humble
 ```
 
 Browse http://127.0.0.1:6080/.
@@ -40,25 +39,6 @@ Browse http://127.0.0.1:6080/.
 
 To build Docker image from this Dockerfile, run the following command.
 
-* dashing (deprecated)
-```sh
-cd dashing && docker build -t tiryoh/ros2-desktop-vnc:dashing .
-```
-
-* eloquent (deprecated)
-```sh
-cd eloquent && docker build -t tiryoh/ros2-desktop-vnc:eloquent .
-```
-
-* foxy (deprecated)
-```sh
-cd foxy && docker build -t tiryoh/ros2-desktop-vnc:foxy .
-```
-
-* galactic (deprecated)
-```sh
-cd galactic && docker build -t tiryoh/ros2-desktop-vnc:galactic .
-```
 
 * humble
 ```sh
@@ -70,25 +50,7 @@ cd humble && docker buildx build --platform=linux/amd64 --progress=plain -t tiry
 cd humble && docker buildx build --platform=linux/arm64 --progress=plain -t tiryoh/ros2-desktop-vnc:humble-arm64 .
 ```
 
-* iron
-```sh
-# using "docker build"
-cd iron && docker build -t tiryoh/ros2-desktop-vnc:iron .
-# using "docker buildx" (amd64)
-cd iron && docker buildx build --platform=linux/amd64 --progress=plain -t tiryoh/ros2-desktop-vnc:iron-amd64 .
-# using "docker buildx" (arm64)
-cd iron && docker buildx build --platform=linux/arm64 --progress=plain -t tiryoh/ros2-desktop-vnc:iron-arm64 .
-```
 
-* rolling
-```sh
-# using "docker build"
-cd rolling && docker build -t tiryoh/ros2-desktop-vnc:rolling .
-# using "docker buildx" (amd64)
-cd rolling && docker buildx build --platform=linux/amd64 --progress=plain -t tiryoh/ros2-desktop-vnc:rolling-amd64 .
-# using "docker buildx" (arm64)
-cd rolling && docker buildx build --platform=linux/arm64 --progress=plain -t tiryoh/ros2-desktop-vnc:rolling-arm64 .
-```
 
 ## Docker tags on hub.docker.com
 
