@@ -1,4 +1,5 @@
 # Copyright 2020-2023 Tiryoh<tiryoh@gmail.com>
+# 2023-2024 xtile<karpizin@gmail.com>
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +19,7 @@
 FROM ubuntu:jammy-20230816
 
 ARG TARGETPLATFORM
-LABEL maintainer="Tiryoh<tiryoh@gmail.com>"
+LABEL maintainer="xtile<karpizin@gmail.com>"
 
 SHELL ["/bin/bash", "-c"]
 
@@ -43,7 +44,7 @@ RUN apt-get update && \
         tigervnc-standalone-server tigervnc-common \
         supervisor wget curl gosu git sudo python3-pip tini \
         build-essential vim sudo lsb-release locales \
-        bash-completion tzdata terminator && \
+        bash-completion tzdata terminator nano htop && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
@@ -109,13 +110,15 @@ RUN rosdep update
 # Install simulation package only on amd64
 # Not ready for arm64 for now (July 28th, 2020)
 # https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56#issuecomment-1196359860
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-    apt-get update -q && \
+#RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+RUN    apt-get update -q && \
     apt-get install -y \
     ros-${ROS_DISTRO}-gazebo-ros-pkgs \
     ros-${ROS_DISTRO}-ros-ign && \
     rm -rf /var/lib/apt/lists/*; \
     fi
+
+RUN git clone git@github.com:ArduPilot/ardupilot.git
 
 COPY ./humble/entrypoint.sh /
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
