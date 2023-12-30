@@ -119,10 +119,10 @@ ARG INSTALL_PACKAGE=desktop
 #    rm -rf /var/lib/apt/lists/*; \
 #    fi
 
-#COPY ./humble/entrypoint.sh /
-#ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
+COPY ./humble/entrypoint.sh /
+ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
 
-CMD sleep infinity
+#CMD sleep infinity
 
 ENV USER ubuntu
 ENV PASSWD ubuntu
