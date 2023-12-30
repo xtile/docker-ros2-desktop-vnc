@@ -119,7 +119,8 @@ RUN if [ "1" = "1" ]; then \
     rm -rf /var/lib/apt/lists/*;  \
     fi
 
-RUN git clone git@github.com:ArduPilot/ardupilot.git
+#RUN git clone https://github.com:ArduPilot/ardupilot.git
+RUN git clone https://github.com/ArduPilot/ardupilot.git
 
 COPY ./humble/entrypoint.sh /
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
