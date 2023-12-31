@@ -128,7 +128,11 @@ WORKDIR /
 RUN git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git
 
 
+RUN echo "export PATH=$PATH:/ardupilot/Tools/autotest" >> /home/ubuntu/.bashrc
 
+RUN echo "running install-prereqs-ubuntu.sh"
+
+RUN /ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 
 COPY ./humble/entrypoint.sh /
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
