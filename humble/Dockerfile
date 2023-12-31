@@ -119,14 +119,16 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/*; # \
 #    fi
 
-ros-humble-ros-gz
 
 
-WORKDIR /ardupilot
+WORKDIR /
 
 
 #RUN git clone https://github.com:ArduPilot/ardupilot.git
-RUN git clone https://github.com/ArduPilot/ardupilot.git
+RUN git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git
+
+
+
 
 COPY ./humble/entrypoint.sh /
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
