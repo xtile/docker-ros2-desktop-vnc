@@ -111,7 +111,7 @@ RUN rosdep update
 # Not ready for arm64 for now (July 28th, 2020) and now (Dec31, 2023)
 # https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56#issuecomment-1196359860
 #RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-    apt-get update -q && \
+RUN apt-get update -q && \
     apt-get install -y \
     #ros-${ROS_DISTRO}-gazebo-ros-pkgs \
     #ros-${ROS_DISTRO}-ros-ign && \
