@@ -115,7 +115,7 @@ RUN apt-get update -q && \
     apt-get install -y \
     #ros-${ROS_DISTRO}-gazebo-ros-pkgs \
     #ros-${ROS_DISTRO}-ros-ign && \
-    ros-humble-ros-gz && 
+    ros-${ROS_DISTRO}-ros-gz && \
     rm -rf /var/lib/apt/lists/*; # \
 #    fi
 
