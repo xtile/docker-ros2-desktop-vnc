@@ -108,16 +108,18 @@ RUN apt-get update -q && \
 RUN rosdep update
 
 # Install simulation package only on amd64
-# Not ready for arm64 for now (July 28th, 2020)
+# Not ready for arm64 for now (July 28th, 2020) and now (Dec31, 2023)
 # https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56#issuecomment-1196359860
-#RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-#RUN if [ "1" = "1" ]; then \
-#    apt-get update -q && \
-#    apt-get install -y \
-#    ros-${ROS_DISTRO}-gazebo-ros-pkgs \
-#    ros-${ROS_DISTRO}-ros-ign && \
-#    rm -rf /var/lib/apt/lists/*; # \
-#    fi
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+    apt-get update -q && \
+    apt-get install -y \
+    ros-${ROS_DISTRO}-gazebo-ros-pkgs \
+    ros-${ROS_DISTRO}-ros-ign && \
+    rm -rf /var/lib/apt/lists/*; # \
+    fi
+
+WORKDIR /ardupilot
+
 
 #RUN git clone https://github.com:ArduPilot/ardupilot.git
 RUN git clone https://github.com/ArduPilot/ardupilot.git
