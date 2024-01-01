@@ -124,15 +124,16 @@ RUN apt-get update -q && \
 WORKDIR /
 
 
-#RUN git clone https://github.com:ArduPilot/ardupilot.git
-RUN git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git
+RUN echo "git clone && running install-prereqs-ubuntu.sh"
 
+#RUN git clone https://github.com:ArduPilot/ardupilot.git
+RUN git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git && \
+    /ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y 
 
 #RUN echo "export PATH=$PATH:/ardupilot/Tools/autotest" >> /home/ubuntu/.bashrc
 
-RUN echo "running install-prereqs-ubuntu.sh"
 
-RUN /ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
+#RUN /ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 
 COPY ./humble/entrypoint.sh /
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
