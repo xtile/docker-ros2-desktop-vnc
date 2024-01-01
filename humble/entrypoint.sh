@@ -338,6 +338,9 @@ Icon=vscodium
 EOF
 chown -R $USER:$USER $HOME/Desktop
 
+echo "export PATH=$PATH:/ardupilot/Tools/autotest" >> $BASHRC_PATH
+
+
 # clearup
 PASSWORD=
 VNC_PASSWORD=
