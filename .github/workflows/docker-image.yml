@@ -30,6 +30,21 @@ jobs:
       id-token: write
 
     steps:
+
+#      - name: Maximize build space
+#        uses: easimon/maximize-build-space@master
+#        with:
+#          root-reserve-mb: 512
+#          swap-size-mb: 1024
+#          remove-dotnet: 'true'
+
+
+      - name: check space
+        run: |
+          echo "Free space:"
+          df -h
+
+    
       - id: string
         uses: ASzc/change-string-case-action@v5
         with:
