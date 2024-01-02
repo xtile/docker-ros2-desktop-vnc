@@ -127,8 +127,7 @@ WORKDIR /
 RUN echo "git clone && running install-prereqs-ubuntu.sh"
 
 #RUN git clone https://github.com:ArduPilot/ardupilot.git
-RUN git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git && \
-    /ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y 
+RUN git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git # &&   /ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y 
 
 #RUN echo "export PATH=$PATH:/ardupilot/Tools/autotest" >> /home/ubuntu/.bashrc
 
