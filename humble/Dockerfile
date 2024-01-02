@@ -113,6 +113,10 @@ RUN du -sh /var/cache/apt/archives
 RUN  apt-get clean
 RUN  apt-get autoremove
 RUN apt-get autoclean
+RUN rm -rf /usr/share/dotnet
+RUN  rm -rf /opt/ghc
+RUN  rm -rf "/usr/local/share/boost"
+RUN rm -rf "$AGENT_TOOLSDIRECTORY"
 RUN df -h
 
 
