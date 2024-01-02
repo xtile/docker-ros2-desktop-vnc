@@ -107,6 +107,18 @@ RUN apt-get update -q && \
 
 RUN rosdep update
 
+RUN df -h
+
+RUN du -sh /var/cache/apt/archives
+RUN  apt-get clean
+RUN  apt-get autoremove
+RUN apt-get autoclean
+RUN df -h
+
+
+
+
+
 # Install simulation package only on amd64
 # Not ready for arm64 for now (July 28th, 2020) and now (Dec31, 2023)
 # https://github.com/Tiryoh/docker-ros2-desktop-vnc/pull/56#issuecomment-1196359860
@@ -116,7 +128,8 @@ RUN apt-get update -q && \
     #ros-${ROS_DISTRO}-gazebo-ros-pkgs \
     #ros-${ROS_DISTRO}-ros-ign && \
     ros-${ROS_DISTRO}-ros-gz && \
-    rm -rf /var/lib/apt/lists/*; # \
+    rm -rf /var/lib/apt/lists/* 
+#; # \
 #    fi
 
 
